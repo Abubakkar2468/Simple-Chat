@@ -53,20 +53,23 @@
 </head>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  
   var socket = io();
+
   function emitMsg() {
     socket.emit('chat message', document.getElementById('msg').value);
     document.getElementById('msg').value = '';
     // return false;
   }
+
   function chatMsg() {
-    socket.on('chat message', function (msg) {
-      console.log('dsvvvvvvvvvvvl;', msg);
-      var node = document.createElement('li');
-      document.getElementById('messages').appendChild(node).innerText = msg;
-      socket.removeAllListeners();
-    });
+    // setTimeout(() => {
+      socket.on('chat message', function (msg) {
+        console.log('dsvvvvvvvvvvvl;', msg);
+        var node = document.createElement('li');
+        document.getElementById('messages').appendChild(node).innerText = msg;
+        socket.removeAllListeners();
+      });
+    // }, 10);
   }
 </script>
 
